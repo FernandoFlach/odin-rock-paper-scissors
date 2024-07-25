@@ -2,6 +2,7 @@
 let option;
 let human_score = 0;
 let computer_score = 0;
+let x;
 
 function getComputerChoice(){
     x = Math.random()
@@ -19,18 +20,17 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(text = "Choose either rock, paper or scissors"){
-    x = prompt(text)
-    if (x == "rock" ||  x == "paper" || x == "scissors"){
-        return x
+
+function getHumanChoice(){
+    while (true){
+        x = prompt("Choose either rock, paper or scissors").toLowerCase();
+        if (x == "rock" ||  x == "paper" || x == "scissors"){
+            return x
+        }
     }
-    else {
-        getHumanChoice("Please insert a valid option")
-    }
-    
 }
 
-function winner(human, computer){
+function calculate_winner(human, computer){
     if(human == "paper"){
         if(computer == "paper"){
             return "draw"
@@ -65,10 +65,34 @@ function winner(human, computer){
         else {
             return "draw"
         }
-}}
+}
+}
 
-let computer = getComputerChoice();
-let human = getHumanChoice();
-console.log("Computer:", computer)
-console.log("Human:", human)
-console.log("Winner is:", winner(human, computer));
+function play_round(){
+    let computer = getComputerChoice();
+    let human = getHumanChoice();
+    let winner; 
+    winner = calculate_winner(human, computer)
+    console.log("Computer:", computer)
+    console.log("Human:", human)
+    console.log("Winner is:", winner);
+    console.log("")
+
+    // Calculate score
+    if(winner == "human"){
+        human_score += 1;
+    }
+    else if(winner == "computer"){
+        computer_score += 1;
+    }
+}
+
+function play_game(){
+    for(let i = 0; i < 5; i++){
+        play_round();
+    }
+    console.log("Human score:", human_score);
+    console.log("Computer score:", computer_score);
+}
+
+play_game();
