@@ -72,11 +72,11 @@ function play_round(){
     let computer = getComputerChoice();
     let human = getHumanChoice();
     let winner; 
-    winner = calculate_winner(human, computer)
-    console.log("Computer:", computer)
-    console.log("Human:", human)
+    winner = calculate_winner(human, computer);
+    console.log("Computer:", computer);
+    console.log("Human:", human);
     console.log("Winner is:", winner);
-    console.log("")
+    
 
     // Calculate score
     if(winner == "human"){
@@ -85,14 +85,18 @@ function play_round(){
     else if(winner == "computer"){
         computer_score += 1;
     }
+
+    console.log("Human:", human_score, "Computer:", computer_score);
+    console.log("");
 }
 
 function play_game(){
     for(let i = 0; i < 5; i++){
         play_round();
     }
-    console.log("Human score:", human_score);
-    console.log("Computer score:", computer_score);
+    console.log("Final Score:")
+    console.log("Human:", human_score, "Computer:", computer_score);
+
 }
 
 play_game();
