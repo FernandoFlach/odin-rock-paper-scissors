@@ -90,13 +90,18 @@ function play_round(){
     console.log("");
 }
 
-function play_game(){
-    for(let i = 0; i < 5; i++){
-        play_round();
-    }
-    console.log("Final Score:")
-    console.log("Human:", human_score, "Computer:", computer_score);
+// function play_game(){
+//     for(let i = 0; i < 5; i++){
+//         play_round();
+//     }
+//     console.log("Final Score:")
+//     console.log("Human:", human_score, "Computer:", computer_score);
 
-}
+// }
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
 
-play_game();
+rockButton.addEventListener("click", play_round("rock"))
+paperButton.addEventListener("click", play_round("paper"))
+scissorskButton.addEventListener("click", play_round("scissors"))
