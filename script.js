@@ -104,4 +104,4 @@ const scissorsButton = document.querySelector("#scissors");
 
 rockButton.addEventListener("click", play_round("rock"))
 paperButton.addEventListener("click", play_round("paper"))
-scissorskButton.addEventListener("click", play_round("scissors"))
+scissorsButton.addEventListener("click", play_round("scissors"))
