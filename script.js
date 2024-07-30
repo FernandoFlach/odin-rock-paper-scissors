@@ -21,14 +21,14 @@ function getComputerChoice(){
 }
 
 
-function getHumanChoice(){
-    while (true){
-        x = prompt("Choose either rock, paper or scissors").toLowerCase();
-        if (x == "rock" ||  x == "paper" || x == "scissors"){
-            return x
-        }
-    }
-}
+// function getHumanChoice(){
+//     while (true){
+//         x = prompt("Choose either rock, paper or scissors").toLowerCase();
+//         if (x == "rock" ||  x == "paper" || x == "scissors"){
+//             return x
+//         }
+//     }
+// }
 
 function calculate_winner(human, computer){
     if(human == "paper"){
@@ -68,9 +68,9 @@ function calculate_winner(human, computer){
 }
 }
 
-function play_round(){
+function play_round(human){
     let computer = getComputerChoice();
-    let human = getHumanChoice();
+    //let human = getHumanChoice();
     let winner; 
     winner = calculate_winner(human, computer);
     console.log("Computer:", computer);
@@ -102,6 +102,8 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-rockButton.addEventListener("click", play_round("rock"))
-paperButton.addEventListener("click", play_round("paper"))
-scissorsButton.addEventListener("click", play_round("scissors"))
+rockButton.addEventListener("click", () => { play_round("rock")})
+paperButton.addEventListener("click", () => { play_round("paper")})
+scissorsButton.addEventListener("click", () => { play_round("scissors")})
+// paperButton.addEventListener("click", play_round("paper"))
+// scissorsButton.addEventListener("click", play_round("scissors"))
