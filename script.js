@@ -93,6 +93,7 @@ function play_round(human){
     else if(winner == "computer"){
         computer_score += 1;
     }
+
     
     // A parent div with three child divs
     const results = document.createElement("div");
@@ -102,15 +103,30 @@ function play_round(human){
 
     results.style.marginTop = "25px";
 
-    total_results.appendChild(results);
-    results.appendChild(humanResult);
-    results.appendChild(computerResult);
-    results.appendChild(winnerResult);
+    total_results.prepend(results);
+    results.prepend(humanResult);
+    results.prepend(computerResult);
+    results.prepend(winnerResult);
 
     humanResult.textContent = `Human: ${human}`;
     computerResult.textContent = `Computer: ${computer}`;
     winnerResult.textContent = `Winner: ${winner}`;
    
+    // Score
+    const score = document.createElement("div");
+    results.prepend(score);
+    score.textContent = `Human: ${human_score} Computer: ${computer_score}`;
+
+    if (computer_score == 5){
+        const ending = document.createElement("h4");
+        results.prepend(ending);
+        ending.textContent = `The winner is the Computer!`
+    } else if (human_score == 5) {
+        const ending = document.createElement("h4");
+        results.prepend(ending);
+        ending.textContent = `The winner is the Human!`
+    }
+
 
     console.log("Human:", human_score, "Computer:", computer_score);
     console.log("");
