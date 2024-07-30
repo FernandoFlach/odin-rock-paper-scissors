@@ -1,8 +1,9 @@
 
-let option;
+let option, x;
 let human_score = 0;
 let computer_score = 0;
-let x;
+const total_results = document.querySelector("#results")
+
 
 function getComputerChoice(){
     x = Math.random()
@@ -19,16 +20,6 @@ function getComputerChoice(){
 
 
 }
-
-
-// function getHumanChoice(){
-//     while (true){
-//         x = prompt("Choose either rock, paper or scissors").toLowerCase();
-//         if (x == "rock" ||  x == "paper" || x == "scissors"){
-//             return x
-//         }
-//     }
-// }
 
 function calculate_winner(human, computer){
     if(human == "paper"){
@@ -68,15 +59,32 @@ function calculate_winner(human, computer){
 }
 }
 
-function play_round(human){
-    let computer = getComputerChoice();
-    //let human = getHumanChoice();
-    let winner; 
-    winner = calculate_winner(human, computer);
-    console.log("Computer:", computer);
-    console.log("Human:", human);
-    console.log("Winner is:", winner);
+// function old_play_round(human){
+//     let computer = getComputerChoice();
+//     //let human = getHumanChoice();
+//     let winner; 
+//     winner = calculate_winner(human, computer);
+//     console.log("Computer:", computer);
+//     console.log("Human:", human);
+//     console.log("Winner is:", winner);
     
+
+//     // Calculate score
+//     if(winner == "human"){
+//         human_score += 1;
+//     }
+//     else if(winner == "computer"){
+//         computer_score += 1;
+//     }
+
+//     console.log("Human:", human_score, "Computer:", computer_score);
+//     console.log("");
+// }
+
+function play_round(human){
+
+    let computer = getComputerChoice();
+    let winner = calculate_winner(human, computer);
 
     // Calculate score
     if(winner == "human"){
@@ -85,19 +93,30 @@ function play_round(human){
     else if(winner == "computer"){
         computer_score += 1;
     }
+    
+    // A parent div with three child divs
+    const results = document.createElement("div");
+    const computerResult = document.createElement("div");
+    const humanResult = document.createElement("div");
+    const winnerResult = document.createElement("div");
+
+    results.style.marginTop = "25px";
+
+    total_results.appendChild(results);
+    results.appendChild(humanResult);
+    results.appendChild(computerResult);
+    results.appendChild(winnerResult);
+
+    humanResult.textContent = `Human: ${human}`;
+    computerResult.textContent = `Computer: ${computer}`;
+    winnerResult.textContent = `Winner: ${winner}`;
+   
 
     console.log("Human:", human_score, "Computer:", computer_score);
     console.log("");
 }
 
-// function play_game(){
-//     for(let i = 0; i < 5; i++){
-//         play_round();
-//     }
-//     console.log("Final Score:")
-//     console.log("Human:", human_score, "Computer:", computer_score);
 
-// }
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
